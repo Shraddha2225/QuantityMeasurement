@@ -196,6 +196,16 @@ public class TestQuantityMeasurement {
         Assert.assertEquals(3,add,0.0);
     }
 
+    @Test
+    public void givenValueOfGallon_WhenCompare_ShouldReturnTrue() {
+        double volume = quantityMeasurement.unitConversion(QuantityMeasurement.UnitType.GALLONTOLITRES, 1);
+        Assert.assertEquals(3.78,volume,0.0);
+    }
+    @Test
+    public void givenValueInLitre_WhenCompare_ShouldReturnTrue() {
+        double volume = quantityMeasurement.unitConversion(QuantityMeasurement.UnitType.LITRETOMILLILITRE, 1);
+        Assert.assertEquals(1000,volume,0.0);
+    }
 }
 
 

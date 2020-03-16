@@ -9,7 +9,7 @@ public class QuantityMeasurement<E>{
 
     public  enum UnitType {
         FEET,INCH, FEETTOINCH, INCHTOFEET, YARDSTOFEET, FEETTOYARDS,
-        INCHTOYARDS, YARDSTOINCH,INCHTOCENTIMETER,CENTIMETERTOINCH,GALLONTOLITRES
+        INCHTOYARDS, YARDSTOINCH,INCHTOCENTIMETER,CENTIMETERTOINCH,GALLONTOLITRES,LITRETOMILLILITRE
 
     }
 
@@ -54,7 +54,9 @@ public class QuantityMeasurement<E>{
         }else if(unit == UnitType.CENTIMETERTOINCH){
             return value / 2.5;
         }else if(unit == UnitType.GALLONTOLITRES){
-            return value * 3.785;
+            return value * 3.78;
+        }else if (unit == UnitType.LITRETOMILLILITRE){
+            return value * 1000;
         }
         return 0;
     }
