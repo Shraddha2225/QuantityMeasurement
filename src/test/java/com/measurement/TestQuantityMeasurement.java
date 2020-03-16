@@ -222,6 +222,26 @@ public class TestQuantityMeasurement {
         double add=volume+volume1;
         Assert.assertEquals(2,add,0.0);
     }
+
+    @Test
+    public void givenValueINKillogram_WhenCompare_ShouldReturnTrue() {
+        double weight = quantityMeasurement.unitConversion(QuantityMeasurement.UnitType.KILLOGRAMTOGRAM, 1);
+        Assert.assertEquals(1000,weight,0.0);
+    }
+
+    @Test
+    public void givenValueInTonne_WhenCompare_ShouldReturnTrue() {
+        double weight = quantityMeasurement.unitConversion(QuantityMeasurement.UnitType.TONNETOKILLLOGRAMS, 1);
+        Assert.assertEquals(1000,weight,0.00);
+    }
+
+    @Test
+    public void givenValueInTonnesAndGram_WhenCompare_ShouldReturnTrue() {
+        double weight1 = quantityMeasurement.unitConversion(QuantityMeasurement.UnitType.TONNETOKILLLOGRAMS, 1);
+        double weight2 = quantityMeasurement.unitConversion(QuantityMeasurement.UnitType.GRAMTOKILLOGRAM, 1000);
+        double result = weight1 + weight2;
+        Assert.assertEquals(1001,result,0.00);
+    }
 }
 
 

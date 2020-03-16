@@ -10,7 +10,7 @@ public class QuantityMeasurement<E>{
     public  enum UnitType {
         FEET,INCH, FEETTOINCH, INCHTOFEET, YARDSTOFEET, FEETTOYARDS,
         INCHTOYARDS, YARDSTOINCH,INCHTOCENTIMETER,CENTIMETERTOINCH,GALLONTOLITRES,LITRETOMILLILITRE,
-        GALLON, MILLILITRETOLITER, LITRE
+        GALLON, MILLILITRETOLITER, KILLOGRAMTOGRAM, TONNETOKILLLOGRAMS, TONNES, GRAM, GRAMTOKILLOGRAM, LITRE
     }
 
     public QuantityMeasurement() {
@@ -60,10 +60,17 @@ public class QuantityMeasurement<E>{
         }else if(unit == UnitType.GALLON){
             return value;
         }else if(unit == UnitType.LITRE){
-            return value;}
-        else if(unit == UnitType.MILLILITRETOLITER){
+            return value;
+        }else if(unit == UnitType.MILLILITRETOLITER){
             return value / 1000;
-        }return 0;
+        }else if(unit == UnitType.KILLOGRAMTOGRAM){
+            return value * 1000;
+        }else if(unit == UnitType.TONNETOKILLLOGRAMS){
+            return value * 1000;
+        }else if(unit == UnitType.GRAMTOKILLOGRAM){
+            return value / 1000;
+        }
+        return 0;
     }
 
 }
