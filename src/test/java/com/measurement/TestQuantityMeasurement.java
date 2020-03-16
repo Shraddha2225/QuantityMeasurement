@@ -110,7 +110,28 @@ public class TestQuantityMeasurement {
         boolean result = quantityMeasurement.valueCheck(result1, result2);
         Assert.assertEquals(true, result);
     }
+    @Test
+    public void givenValueCheckFor1InchAnd1Feet_ShouldReturnFalse() {
+        double result = quantityMeasurement.unitConversion(QuantityMeasurement.unitType.INCH,1);
+        Assert.assertNotEquals(1,result);
+    }
 
+    @Test
+    public void givenValueCheckFor1FeetAnd1Inch_ShouldReturnFalse() {
+        double result = quantityMeasurement.unitConversion(QuantityMeasurement.unitType.FEET,1);
+        Assert.assertNotEquals(1,result);
+    }
+    @Test
+    public void givenValueCheckFor1FeetAnd12Inch_ShouldReturnTrue() {
+        double result1 = quantityMeasurement.unitConversion(QuantityMeasurement.unitType.FEET,1);
+        Assert.assertEquals(12,result1,0.0);
+    }
+
+    @Test
+    public void givenValueCheckFor12InchAnd1Feet_ShouldReturnFalse() {
+        double result = quantityMeasurement.unitConversion(QuantityMeasurement.unitType.INCH,12);
+        Assert.assertNotEquals(1,result);
+    }
 }
 
 
