@@ -103,6 +103,14 @@ public class TestQuantityMeasurement {
         boolean result = quantityMeasurement.valueCheck(result1, result2);
         Assert.assertEquals(false, result);
     }
+    @Test
+    public void givenValueCheckForInchAndFeet_WhenZero_ShouldReturnTrue() {
+        double result1 = quantityMeasurement.unitConversion(QuantityMeasurement.unitType.INCH,0);
+        double result2 = quantityMeasurement.unitConversion(QuantityMeasurement.unitType.FEET,0);
+        boolean result = quantityMeasurement.valueCheck(result1, result2);
+        Assert.assertEquals(true, result);
+    }
+
 }
 
 
