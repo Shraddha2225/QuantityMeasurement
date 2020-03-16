@@ -166,6 +166,36 @@ public class TestQuantityMeasurement {
         double result =quantityMeasurement.unitConversion(QuantityMeasurement.UnitType.INCHTOCENTIMETER, 2);
         Assert.assertEquals(5,result,0.0);
     }
+    @Test
+    public void givenValueOfTwoFeet_WhenAdd_ShouldReturnTrue() {
+        double feetToInch1 =quantityMeasurement.unitConversion(QuantityMeasurement.UnitType.FEETTOINCH, 1);
+        double feetToInch2 =quantityMeasurement.unitConversion(QuantityMeasurement.UnitType.FEETTOINCH, 1);
+        double addOfInches=feetToInch1+feetToInch2;
+        Assert.assertEquals(24,addOfInches,0.0);
+    }
+    @Test
+    public void givenValueOfFeetAndInch_WhenAdd_ShouldReturnTrue() {
+        double feetToInch1 =quantityMeasurement.unitConversion(QuantityMeasurement.UnitType.FEETTOINCH, 1);
+        double inch = quantityMeasurement.unitConversion(QuantityMeasurement.UnitType.INCH,2);
+        double add=feetToInch1+inch;
+        Assert.assertEquals(14,add,0.0);
+    }
+    @Test
+    public void givenValueOfTwoInches_WhenAdd_ShouldReturnTrue() {
+        double inch1 =quantityMeasurement.unitConversion(QuantityMeasurement.UnitType.INCH, 2);
+        double inch2 = quantityMeasurement.unitConversion(QuantityMeasurement.UnitType.INCH,2);
+        double add=inch1+inch2;
+        Assert.assertEquals(4,add,0.0);
+    }
+
+    @Test
+    public void givenCentimeterAndInch_WhenAdd_ShouldReturnTrue() {
+        double inch1 =quantityMeasurement.unitConversion(QuantityMeasurement.UnitType.INCH, 2);
+        double inch2 = quantityMeasurement.unitConversion(QuantityMeasurement.UnitType.CENTIMETERTOINCH,2.5);
+        double add=inch1+inch2;
+        Assert.assertEquals(3,add,0.0);
+    }
+
 }
 
 
