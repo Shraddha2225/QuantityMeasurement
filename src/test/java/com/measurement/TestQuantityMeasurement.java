@@ -206,6 +206,22 @@ public class TestQuantityMeasurement {
         double volume = quantityMeasurement.unitConversion(QuantityMeasurement.UnitType.LITRETOMILLILITRE, 1);
         Assert.assertEquals(1000,volume,0.0);
     }
+
+    @Test
+    public void givenValueOfGallonAndLitre_WhenAdd_ShouldReturnTrue() {
+        double volume = quantityMeasurement.unitConversion(QuantityMeasurement.UnitType.LITRE, 3.78);
+        double volume1 = quantityMeasurement.unitConversion(QuantityMeasurement.UnitType.GALLONTOLITRES, 1);
+        double add=volume+volume1;
+        Assert.assertEquals(7.56,add,0.0);
+    }
+
+    @Test
+    public void givenValueOfMilliLitreAndLitre_WhenAdd_ShouldReturnTrue() {
+        double volume = quantityMeasurement.unitConversion(QuantityMeasurement.UnitType.LITRE, 1);
+        double volume1 = quantityMeasurement.unitConversion(QuantityMeasurement.UnitType.MILLILITRETOLITER, 1000);
+        double add=volume+volume1;
+        Assert.assertEquals(2,add,0.0);
+    }
 }
 
 
