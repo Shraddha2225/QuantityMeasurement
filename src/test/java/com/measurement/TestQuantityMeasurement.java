@@ -5,103 +5,102 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class TestQuantityMeasurement {
-    private QuantityMeasurementForFeet quantityMeasurement;
-    private QuantityMeasurementForInch quantityMeasurementForInch;
+    private QuantityMeasurement quantityMeasurement;
 
     @Before
     public void setUp() {
-        quantityMeasurement = new QuantityMeasurementForFeet();
-        quantityMeasurementForInch = new QuantityMeasurementForInch();
+        quantityMeasurement = new QuantityMeasurement();
+
     }
 
     @Test
-    public void givenEqualValue_ShouldReturnTrue() {
-        int result1 = quantityMeasurement.conversionFeetToInch(0);
-        int result2 = quantityMeasurement.conversionFeetToInch(0);
+    public void givenValueCheckForFeet_WhenZero_ShouldReturnTrue() {
+        int result1 = quantityMeasurement.unitConversion(QuantityMeasurement.unitType.FEET,0);
+        int result2 = quantityMeasurement.unitConversion(QuantityMeasurement.unitType.FEET,0);
         boolean result = quantityMeasurement.valueCheck(result1, result2);
         Assert.assertEquals(true, result);
     }
 
     @Test
-    public void givenNull_ShouldReturnFalse() {
-        int FEET = quantityMeasurement.conversionFeetToInch(0);
+    public void givenNullForFeet_ShouldReturnFalse() {
+        int FEET = quantityMeasurement.unitConversion(QuantityMeasurement.unitType.FEET,0);
         boolean result = quantityMeasurement.valueCheck(null, FEET);
         Assert.assertEquals(false, result);
     }
 
     @Test
     public void givenReference_ShouldReturnTrue() {
-        QuantityMeasurementForFeet referenceTwo = new QuantityMeasurementForFeet();
-        referenceTwo.conversionFeetToInch(2);
-        quantityMeasurement.conversionFeetToInch(2);
+        QuantityMeasurement referenceTwo = new QuantityMeasurement();
+        referenceTwo.unitConversion(QuantityMeasurement.unitType.FEET,2);
+        quantityMeasurement.unitConversion(QuantityMeasurement.unitType.FEET,2);
         Assert.assertEquals(quantityMeasurement, referenceTwo);
     }
 
     @Test
-    public void givenType_ShouldReturnTrue() {
+    public void givenTypeForFeet_ShouldReturnTrue() {
         boolean result = quantityMeasurement.getClass().equals(this.getClass());
         Assert.assertEquals(false, result);
     }
 
     @Test
     public void givenFeetValue_WhenEqual_ShouldReturnTrue() {
-        int result1 = quantityMeasurement.conversionFeetToInch(2);
-        int result2 = quantityMeasurement.conversionFeetToInch(2);
+        int result1 = quantityMeasurement.unitConversion(QuantityMeasurement.unitType.FEET,3);
+        int result2 = quantityMeasurement.unitConversion(QuantityMeasurement.unitType.FEET,3);
         boolean result = quantityMeasurement.valueCheck(result1, result2);
         Assert.assertEquals(true, result);
     }
 
     @Test
     public void givenFeetValue_WhenNotEqual_ShouldReturnFalse() {
-        int result1 = quantityMeasurement.conversionFeetToInch(2);
-        int result2 = quantityMeasurement.conversionFeetToInch(1);
+        int result1 = quantityMeasurement.unitConversion(QuantityMeasurement.unitType.FEET,3);
+        int result2 = quantityMeasurement.unitConversion(QuantityMeasurement.unitType.FEET,6);
         boolean result = quantityMeasurement.valueCheck(result1, result2);
         Assert.assertEquals(false, result);
     }
 
     @Test
     public void givenEqualValueForInch_ShouldReturnTrue() {
-        double result1 = quantityMeasurementForInch.conversionInchToFeet(0);
-        double result2 = quantityMeasurementForInch.conversionInchToFeet(0);
-        boolean result = quantityMeasurementForInch.valueCheckForInch(result1, result2);
+        int result1 = quantityMeasurement.unitConversion(QuantityMeasurement.unitType.INCH,0);
+        int result2 = quantityMeasurement.unitConversion(QuantityMeasurement.unitType.INCH,0);
+        boolean result = quantityMeasurement.valueCheck(result1, result2);
         Assert.assertEquals(true, result);
     }
 
     @Test
     public void givenNullForInch_ShouldReturnFalse() {
-        double Inch = quantityMeasurementForInch.conversionInchToFeet(0);
+        double Inch = quantityMeasurement.unitConversion(QuantityMeasurement.unitType.INCH,0);
         boolean result = quantityMeasurement.valueCheck(null, Inch);
         Assert.assertEquals(false, result);
     }
 
     @Test
     public void givenReferenceForInch_ShouldReturnTrue() {
-        QuantityMeasurementForInch referenceTwo = new QuantityMeasurementForInch();
-        referenceTwo.conversionInchToFeet(2);
-        quantityMeasurementForInch.conversionInchToFeet(2);
-        Assert.assertEquals(quantityMeasurementForInch, referenceTwo);
+        QuantityMeasurement referenceTwo = new QuantityMeasurement();
+        referenceTwo.unitConversion(QuantityMeasurement.unitType.INCH,2);
+        quantityMeasurement.unitConversion(QuantityMeasurement.unitType.INCH,2);
+        Assert.assertEquals(quantityMeasurement, referenceTwo);
     }
 
 
     @Test
     public void givenTypeForInch_ShouldReturnTrue() {
-        boolean result = quantityMeasurementForInch.getClass().equals(this.getClass());
+        boolean result = quantityMeasurement.getClass().equals(this.getClass());
         Assert.assertEquals(false, result);
     }
 
     @Test
     public void givenValueCheckForInch_WhenEqual_ShouldReturnTrue() {
-        double result1 = quantityMeasurementForInch.conversionInchToFeet(3);
-        double result2 = quantityMeasurementForInch.conversionInchToFeet(3);
-        boolean result = quantityMeasurementForInch.valueCheckForInch(result1, result2);
+        double result1 = quantityMeasurement.unitConversion(QuantityMeasurement.unitType.INCH,3);
+        double result2 = quantityMeasurement.unitConversion(QuantityMeasurement.unitType.INCH,3);
+        boolean result = quantityMeasurement.valueCheck(result1, result2);
         Assert.assertEquals(true, result);
     }
 
     @Test
     public void givenValueCheckForInch_WhenNotEqual_ShouldReturnFalse() {
-        double result1 = quantityMeasurementForInch.conversionInchToFeet(12);
-        double result2 = quantityMeasurementForInch.conversionInchToFeet(4);
-        boolean result = quantityMeasurementForInch.valueCheckForInch(result1, result2);
+        double result1 = quantityMeasurement.unitConversion(QuantityMeasurement.unitType.INCH,12);
+        double result2 = quantityMeasurement.unitConversion(QuantityMeasurement.unitType.INCH,4);
+        boolean result = quantityMeasurement.valueCheck(result1, result2);
         Assert.assertEquals(false, result);
     }
 }
