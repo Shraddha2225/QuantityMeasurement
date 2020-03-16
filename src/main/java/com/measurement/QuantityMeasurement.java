@@ -2,16 +2,25 @@ package com.measurement;
 import java.util.Objects;
 
 public class QuantityMeasurement<E>{
+   /* private static int type;*/
     private int feet;
     private int inch;
-    public  enum unitType{
-        FEET,INCH
+    private int yards;
+
+    public  enum UnitType {
+        FEET,INCH, FEETTOINCH, INCHTOFEET, YARDSTOFEET, FEETTOYARDS,
+        INCHTOYARDS, YARDSTOINCH,INCHTOCENTIMETER
+
     }
 
     public QuantityMeasurement() {
         this.feet = feet;
         this.inch = inch;
 
+    }
+
+    public boolean valueCheck(E value1, E value2) {
+        return(Objects.equals(value1, value2));
     }
 
     @Override
@@ -23,15 +32,25 @@ public class QuantityMeasurement<E>{
                 inch == that.inch;
     }
 
-    public boolean valueCheck(E value1, E value2) {
-        return(Objects.equals(value1, value2));
-    }
-
-    public int unitConversion( QuantityMeasurement.unitType unit,int value) {
-        if(unit == unitType.FEET) {
+    public double unitConversion(UnitType unit, int value) {
+        if(unit == UnitType.FEETTOINCH) {
             return value * 12;
-        } else if(unit == unitType.INCH) {
+        }else if(unit == UnitType.FEET){
+            return value;
+        }else if(unit == UnitType.INCH){
+            return value;
+        } else if(unit == UnitType.FEETTOYARDS){
+            return value / 3;
+        } else if(unit == UnitType.INCHTOFEET) {
             return value / 12;
+        }else if(unit == UnitType.INCHTOYARDS){
+            return value /36;
+        }else if(unit == UnitType.YARDSTOFEET) {
+            return value * 3;
+        }else if(unit == UnitType.YARDSTOINCH) {
+            return value * 36;
+        }else if(unit == UnitType.INCHTOCENTIMETER) {
+            return value * 2.5;
         }
         return 0;
     }
