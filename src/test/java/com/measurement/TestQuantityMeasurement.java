@@ -242,6 +242,12 @@ public class TestQuantityMeasurement {
         double result = weight1 + weight2;
         Assert.assertEquals(1001,result,0.00);
     }
+
+    @Test
+    public void givenValueTemperature_WhenEquate_ShouldReturnTrue() {
+        double celsius = quantityMeasurement.unitConversion(QuantityMeasurement.UnitType.FAHRENHEITTOCELSIUS, 212);
+        Assert.assertEquals(100,celsius,0.00);
+    }
 }
 
 
