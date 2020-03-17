@@ -7,11 +7,7 @@ public class QuantityMeasurement<E>{
     private int inch;
     private int yards;
 
-    public  enum UnitType {
-        FEET,INCH, FEETTOINCH, INCHTOFEET, YARDSTOFEET, FEETTOYARDS,
-        INCHTOYARDS, YARDSTOINCH,INCHTOCENTIMETER,CENTIMETERTOINCH,GALLONTOLITRES,LITRETOMILLILITRE,
-        GALLON, MILLILITRETOLITER, KILLOGRAMTOGRAM, TONNETOKILLLOGRAMS, GRAMTOKILLOGRAM, FAHRENHEITTOCELSIUS, LITRE
-    }
+
 
     public QuantityMeasurement() {
         this.feet = feet;
@@ -23,6 +19,10 @@ public class QuantityMeasurement<E>{
         return(Objects.equals(value1, value2));
     }
 
+    public double unitConversion(UnitType type, double value) {
+        return (type.value==1.8)?value*type.value+32 :value*type.value;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -31,48 +31,4 @@ public class QuantityMeasurement<E>{
         return feet == that.feet &&
                 inch == that.inch;
     }
-
-    public double unitConversion(UnitType unit, double value) {
-        if(unit == UnitType.FEETTOINCH) {
-            return value * 12;
-        }else if(unit == UnitType.FEET){
-            return value;
-        }else if(unit == UnitType.INCH){
-            return value;
-        } else if(unit == UnitType.FEETTOYARDS){
-            return value / 3;
-        } else if(unit == UnitType.INCHTOFEET) {
-            return value / 12;
-        }else if(unit == UnitType.INCHTOYARDS){
-            return value /36;
-        }else if(unit == UnitType.YARDSTOFEET) {
-            return value * 3;
-        }else if(unit == UnitType.YARDSTOINCH) {
-            return value * 36;
-        }else if(unit == UnitType.INCHTOCENTIMETER) {
-            return value * 2.5;
-        }else if(unit == UnitType.CENTIMETERTOINCH){
-            return value / 2.5;
-        }else if(unit == UnitType.GALLONTOLITRES){
-            return value * 3.78;
-        }else if (unit == UnitType.LITRETOMILLILITRE){
-            return value * 1000;
-        }else if(unit == UnitType.GALLON){
-            return value;
-        }else if(unit == UnitType.LITRE){
-            return value;
-        }else if(unit == UnitType.MILLILITRETOLITER){
-            return value / 1000;
-        }else if(unit == UnitType.KILLOGRAMTOGRAM){
-            return value * 1000;
-        }else if(unit == UnitType.TONNETOKILLLOGRAMS){
-            return value * 1000;
-        }else if(unit == UnitType.GRAMTOKILLOGRAM){
-            return value / 1000;
-        }else if(unit == UnitType.FAHRENHEITTOCELSIUS){
-            return (value-32)/1.8;
-        }
-        return 0;
-    }
-
 }
